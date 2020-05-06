@@ -14,10 +14,15 @@ namespace NewHealthFormApplication
         {
             DataHolder[ginNumber] = new Employee(ginNumber, name, temperature, symptom, hubeiExperience);
         }
-        public void DeleteEmployee(string ginNumber)
+        public bool DeleteEmployee(string ginNumber)
         {
-            DataHolder.Remove(ginNumber);
+            if (DataHolder.ContainsKey(ginNumber))
+            {
+                DataHolder.Remove(ginNumber);
+                return true;
+            }
+            return false;
         }
-        
+
     }
 }
