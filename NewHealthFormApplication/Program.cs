@@ -151,7 +151,7 @@ namespace NewHealthFormApplication
             if (healthDataHolder.DeleteEmployee(ginNumber))
             {
                 Console.WriteLine($"\n{ginNumber}'s data have been deleted.");
-                
+
             }
             else
             {
@@ -165,16 +165,15 @@ namespace NewHealthFormApplication
         {
             Console.WriteLine("Please input the gin number of the employee you would like to edit.");
             string ginNumber = Console.ReadLine();
-            if (InputHandler.EditEmployee(ginNumber))
+            if (healthDataHolder.DataHolder.ContainsKey(ginNumber))
             {
-                Console.WriteLine($"\n{ginNumber}'s data have been edited.");
+                string name = InputHandler.GetName();
+                string temperature = InputHandler.GetTemperature();
+                bool symptom = InputHandler.GetSymptom();
+                bool hubeiExperience = InputHandler.GetHubeiExperience();
+                healthDataHolder.EditEmployee(healthDataHolder.DataHolder, ginNumber, name, temperature, symptom, hubeiExperience);
                 DataPrinter.PrintHeader();
-                string name = healthDataHolder.DataHolder[ginNumber].Name;
-                string temperature = healthDataHolder.DataHolder[ginNumber].Temperature;
-                bool symptom = healthDataHolder.DataHolder[ginNumber].Symptom;
-                bool hubeiExperience = healthDataHolder.DataHolder[ginNumber].HubeiExperience;
                 DataPrinter.PrintAnEmployee(ginNumber, name, temperature, symptom.ToString(), hubeiExperience.ToString());
-
             }
             else
             {
@@ -184,6 +183,5 @@ namespace NewHealthFormApplication
             Console.ReadKey();
             Console.Clear();
         }
-        
     }
 }

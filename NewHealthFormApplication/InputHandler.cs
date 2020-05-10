@@ -84,6 +84,7 @@ namespace NewHealthFormApplication
                 return hubeiExperience;
             }
         }
+        
         public static bool EditEmployee(string ginNumber)
         {
             if (Program.healthDataHolder.DataHolder.ContainsKey(ginNumber))

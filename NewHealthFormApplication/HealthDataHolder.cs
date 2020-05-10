@@ -21,5 +21,12 @@ namespace NewHealthFormApplication
             return false;
         }
 
+        public void EditEmployee(Dictionary<string, Employee> DataHolder, string ginNumber, string name, string temperature, bool symptom, bool hubeiExperience)
+        {
+            DataHolder[ginNumber].Name = name;
+            DataHolder[ginNumber].Temperature = temperature;
+            DataHolder[ginNumber].Symptom = symptom;
+            DataHolder[ginNumber].HubeiExperience = hubeiExperience;
+        }
     }
 }
