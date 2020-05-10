@@ -17,17 +17,17 @@
             get;
             set;
         }
-        public string Symptom
+        public bool Symptom
         {
             get;
             set;
         }
-        public string HubeiExperience
+        public bool HubeiExperience
         {
             get;
             set;
         }
-        public Employee(string ginNumber, string name, string temperature, string symptom, string hubeiExperience)
+        public Employee(string ginNumber, string name, string temperature, bool symptom, bool hubeiExperience)
         {
             GinNumber = ginNumber;
             Name = name;

@@ -67,12 +67,12 @@ namespace NewHealthFormApplication
             string ginNumber = InputHandler.GetGinNumber();
             string name = InputHandler.GetName();
             string temperature = InputHandler.GetTemperature();
-            string symptom = InputHandler.GetSymptom();
-            string hubeiExperience = InputHandler.GetHubeiExperience();
+            bool symptom = InputHandler.GetSymptom();
+            bool hubeiExperience = InputHandler.GetHubeiExperience();
             healthDataHolder.AddEmployee(ginNumber, name, temperature, symptom, hubeiExperience);
             Console.WriteLine("\nYou have finished filling today's investigation.");
             DataPrinter.PrintHeader();
-            DataPrinter.PrintAnEmployee(ginNumber, name, temperature, symptom, hubeiExperience);
+            DataPrinter.PrintAnEmployee(ginNumber, name, temperature, symptom.ToString(), hubeiExperience.ToString());
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
             Console.Clear();
@@ -165,15 +165,15 @@ namespace NewHealthFormApplication
         {
             Console.WriteLine("Please input the gin number of the employee you would like to edit.");
             string ginNumber = Console.ReadLine();
-            if (healthDataHolder.EditEmployee(ginNumber))
+            if (InputHandler.EditEmployee(ginNumber))
             {
                 Console.WriteLine($"\n{ginNumber}'s data have been edited.");
                 DataPrinter.PrintHeader();
                 string name = healthDataHolder.DataHolder[ginNumber].Name;
                 string temperature = healthDataHolder.DataHolder[ginNumber].Temperature;
-                string symptom = healthDataHolder.DataHolder[ginNumber].Symptom;
-                string hubeiExperience = healthDataHolder.DataHolder[ginNumber].HubeiExperience;
-                DataPrinter.PrintAnEmployee(ginNumber, name, temperature, symptom, hubeiExperience);
+                bool symptom = healthDataHolder.DataHolder[ginNumber].Symptom;
+                bool hubeiExperience = healthDataHolder.DataHolder[ginNumber].HubeiExperience;
+                DataPrinter.PrintAnEmployee(ginNumber, name, temperature, symptom.ToString(), hubeiExperience.ToString());
 
             }
             else

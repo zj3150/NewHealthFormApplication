@@ -11,7 +11,7 @@ namespace NewHealthFormApplication
             int i = 0;
             foreach (Employee employee in Program.healthDataHolder.DataHolder.Values)
             {
-                fileLines[i++] = employee.GinNumber + "," + employee.Name + "," + employee.Temperature + "," + employee.Symptom + "," + employee.HubeiExperience;
+                fileLines[i++] = employee.GinNumber + "," + employee.Name + "," + employee.Temperature + "," + employee.Symptom.ToString() + "," + employee.HubeiExperience.ToString();
             }
             File.WriteAllLines(@"D:\temp\NewHealthFormApplication.csv", fileLines);
             Console.WriteLine("\nData have been saved to the file");
@@ -47,15 +47,15 @@ namespace NewHealthFormApplication
                         string ginNumber = employeeData[0];
                         string name = employeeData[1];
                         string temperature = employeeData[2];
-                        string symptom = employeeData[3];
-                        string hubeiExperience = employeeData[4];
+                        bool symptom = employeeData[3] == "Yes" ? true : false ;
+                        bool hubeiExperience = employeeData[4] == "Yes" ? true : false;
                         Program.healthDataHolder.AddEmployee(ginNumber, name, temperature, symptom, hubeiExperience);
                     }
                 }
                 DataPrinter.PrintHeader();
                 foreach (Employee employee in Program.healthDataHolder.DataHolder.Values)
                 {
-                    DataPrinter.PrintAnEmployee(employee.GinNumber, employee.Name, employee.Temperature, employee.Symptom, employee.HubeiExperience);
+                    DataPrinter.PrintAnEmployee(employee.GinNumber, employee.Name, employee.Temperature, employee.Symptom.ToString(), employee.HubeiExperience.ToString());
                 }
                 Console.WriteLine("Press any key to continue");
                 Console.ReadKey();

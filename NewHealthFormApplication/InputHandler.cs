@@ -54,7 +54,7 @@ namespace NewHealthFormApplication
                 return input;
             }
         }
-        public static string GetSymptom()
+        public static bool GetSymptom()
         {
             Console.WriteLine("\nDo you have any symptom? Enter 1 if you have and 2 if you have not.");
             string input = Console.ReadLine();
@@ -65,11 +65,11 @@ namespace NewHealthFormApplication
             }
             else
             {
-                string symptom = (input == "1") ? "Yes" : "No";
+                bool symptom = (input == "1") ? true : false;
                 return symptom;
             }
         }
-        public static string GetHubeiExperience()
+        public static bool GetHubeiExperience()
         {
             Console.WriteLine("\nHave you been to Hubei in the past 14 days? Enter 1 if you have and 2 if you have not.");
             string input = Console.ReadLine();
@@ -80,19 +80,19 @@ namespace NewHealthFormApplication
             }
             else
             {
-                string hubeiExperience = (input == "1") ? "Yes" : "No";
+                bool hubeiExperience = (input == "1") ? true : false;
                 return hubeiExperience;
             }
         }
-        public bool EditEmployee(string ginNumber)
+        public static bool EditEmployee(string ginNumber)
         {
-            if (DataHolder.ContainsKey(ginNumber))
+            if (Program.healthDataHolder.DataHolder.ContainsKey(ginNumber))
             {
                 string name = InputHandler.GetName();
                 string temperature = InputHandler.GetTemperature();
-                string symptom = InputHandler.GetSymptom();
-                string hubeiExperience = InputHandler.GetHubeiExperience();
-                DataHolder[ginNumber] = new Employee(ginNumber, name, temperature, symptom, hubeiExperience);
+                bool symptom = InputHandler.GetSymptom();
+                bool hubeiExperience = InputHandler.GetHubeiExperience();
+                Program.healthDataHolder.DataHolder[ginNumber] = new Employee(ginNumber, name, temperature, symptom, hubeiExperience);
                 return true;
             }
             return false;
