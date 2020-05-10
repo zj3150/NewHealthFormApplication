@@ -10,9 +10,18 @@ namespace NewHealthFormApplication
             Employee newEmployee = new Employee(ginNumber, name, temperature, symptom, hubeiExperience);
             DataHolder.Add(ginNumber, newEmployee);
         }
-        public void EditEmployee(string ginNumber, string name, string temperature, string symptom, string hubeiExperience)
+        public bool EditEmployee(string ginNumber)
         {
-            DataHolder[ginNumber] = new Employee(ginNumber, name, temperature, symptom, hubeiExperience);
+            if (DataHolder.ContainsKey(ginNumber))
+            {
+                string name = InputHandler.GetName();
+                string temperature = InputHandler.GetTemperature();
+                string symptom = InputHandler.GetSymptom();
+                string hubeiExperience = InputHandler.GetHubeiExperience();
+                DataHolder[ginNumber] = new Employee(ginNumber, name, temperature, symptom, hubeiExperience);
+                return true;
+            }
+            return false;
         }
         public bool DeleteEmployee(string ginNumber)
         {

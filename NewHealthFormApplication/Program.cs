@@ -4,24 +4,20 @@ namespace NewHealthFormApplication
 {
     class Program
     {
+        public static HealthDataHolder healthDataHolder;
         static void Main(string[] args)
         {
-            
+            MainMenu();
         }
         static void MainMenu()
         {
             int purpose;
             while (true)
             {
-                Console.WriteLine("\nGood day! What would you like to do? Please enter a number.\n");
-                Console.WriteLine("1. Fill in your form");
-                Console.WriteLine("2. Display data table");
-                Console.WriteLine("3. Save data table to file");
-                Console.WriteLine("4. Load data from file");
-                Console.WriteLine("5. Exit\n");
+                MenuPrinter.PrintMainMenu();
                 if (!int.TryParse(Console.ReadLine(), out purpose))
                 {
-                    Console.WriteLine("You must input an integer.");
+                    Console.WriteLine("\nYou must input an integer.");
                     Console.WriteLine("Press any key to continue");
                     Console.ReadKey();
                     Console.Clear();
@@ -30,17 +26,33 @@ namespace NewHealthFormApplication
                 switch (purpose)
                 {
                     case 1:
+                        Program.healthDataHolder = new HealthDataHolder();
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        Console.Clear();
                         continue;
                     case 2:
+                        AddEmployee();
                         continue;
                     case 3:
+                        DataPrinterMenu();
                         continue;
                     case 4:
+                        CSVFileOperator.SaveDataToFile();
                         continue;
                     case 5:
+                        CSVFileOperator.LoadDataFromFile();
+                        continue;
+                    case 6:
+                        DeleteEmployee();
+                        continue;
+                    case 7:
+                        EditEmployee();
+                        continue;
+                    case 8:
                         break;
                     default:
-                        Console.WriteLine("Please select valid purpose.");
+                        Console.WriteLine("\nPlease select valid purpose.");
                         Console.WriteLine("Press any key to continue.");
                         Console.ReadKey();
                         Console.Clear();
@@ -50,5 +62,128 @@ namespace NewHealthFormApplication
             }
 
         }
+        static void AddEmployee()
+        {
+            string ginNumber = InputHandler.GetGinNumber();
+            string name = InputHandler.GetName();
+            string temperature = InputHandler.GetTemperature();
+            string symptom = InputHandler.GetSymptom();
+            string hubeiExperience = InputHandler.GetHubeiExperience();
+            healthDataHolder.AddEmployee(ginNumber, name, temperature, symptom, hubeiExperience);
+            Console.WriteLine("\nYou have finished filling today's investigation.");
+            DataPrinter.PrintHeader();
+            DataPrinter.PrintAnEmployee(ginNumber, name, temperature, symptom, hubeiExperience);
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            Console.Clear();
+        }
+        static void DataPrinterMenu()
+        {
+            if (healthDataHolder == null || healthDataHolder.DataHolder.Count == 0)
+            {
+                Console.WriteLine("\nThere is no stored data.");
+                Console.WriteLine("Press any key to continue");
+                Console.ReadKey();
+                Console.Clear();
+            }
+            else
+            {
+                while (true)
+                {
+                    MenuPrinter.PrintFilterMenu();
+                    int selection;
+                    if (!int.TryParse(Console.ReadLine(), out selection))
+                    {
+                        Console.WriteLine("\nPlease enter an integer.");
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
+                        Console.Clear();
+                        continue;
+                    }
+                    else
+                    {
+                        switch (selection)
+                        {
+                            case 1:
+                                DataPrinter.PrintDataTable();
+                                continue;
+                            case 2:
+                                DataPrinter.FilterByGinNumber();
+                                continue;
+                            case 3:
+                                DataPrinter.FilterByName();
+                                continue;
+                            case 4:
+                                DataPrinter.FilterByHavingFever();
+                                continue;
+                            case 5:
+                                DataPrinter.FilterByHavingNoFever();
+                                continue;
+                            case 6:
+                                DataPrinter.FilterByHavingSymptom();
+                                continue;
+                            case 7:
+                                DataPrinter.FilterByHavingNoSymptom();
+                                continue;
+                            case 8:
+                                DataPrinter.FilterByHavingHubeiExperience();
+                                continue;
+                            case 9:
+                                DataPrinter.FilterByHavingNoHubeiExperience();
+                                continue;
+                            case 0:
+                                return;
+                            default:
+                                Console.WriteLine("\nPlease enter valid selection.");
+                                Console.WriteLine("Press any key to continue");
+                                Console.ReadKey();
+                                Console.Clear();
+                                continue;
+                        }
+                    }
+                }
+            }
+        }
+        static void DeleteEmployee()
+        {
+            Console.WriteLine("\nPlease input the gin number of the employee you would like to delete.");
+            string ginNumber = Console.ReadLine();
+            if (healthDataHolder.DeleteEmployee(ginNumber))
+            {
+                Console.WriteLine($"\n{ginNumber}'s data have been deleted.");
+                
+            }
+            else
+            {
+                Console.WriteLine($"\nGin number {ginNumber} is not existed.");
+            }
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            Console.Clear();
+        }
+        static void EditEmployee()
+        {
+            Console.WriteLine("Please input the gin number of the employee you would like to edit.");
+            string ginNumber = Console.ReadLine();
+            if (healthDataHolder.EditEmployee(ginNumber))
+            {
+                Console.WriteLine($"\n{ginNumber}'s data have been edited.");
+                DataPrinter.PrintHeader();
+                string name = healthDataHolder.DataHolder[ginNumber].Name;
+                string temperature = healthDataHolder.DataHolder[ginNumber].Temperature;
+                string symptom = healthDataHolder.DataHolder[ginNumber].Symptom;
+                string hubeiExperience = healthDataHolder.DataHolder[ginNumber].HubeiExperience;
+                DataPrinter.PrintAnEmployee(ginNumber, name, temperature, symptom, hubeiExperience);
+
+            }
+            else
+            {
+                Console.WriteLine($"\nGin number {ginNumber} is not existed.");
+            }
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            Console.Clear();
+        }
+        
     }
 }
