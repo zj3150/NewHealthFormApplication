@@ -34,12 +34,9 @@ namespace NewHealthFormApplication
             else
             {
                 string ginNumber = input;
-                string name = Program.healthDataHolder.DataHolder[ginNumber].Name;
-                string temperature = Program.healthDataHolder.DataHolder[ginNumber].Temperature;
-                bool symptom = Program.healthDataHolder.DataHolder[ginNumber].Symptom;
-                bool hubeiExperience = Program.healthDataHolder.DataHolder[ginNumber].HubeiExperience;
+                Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                 PrintHeader();
-                PrintAnEmployee(ginNumber, name, temperature, symptom.ToString(), hubeiExperience.ToString());
+                SetAndPrintAnEmployee(employee);
                 Console.WriteLine("Press any key to continue");
                 Console.ReadKey();
                 Console.Clear();
@@ -56,16 +53,13 @@ namespace NewHealthFormApplication
                 if (Program.healthDataHolder.DataHolder[ginNumber].Name == input)
                 {
                     nameExist = true;
-                    string name = input;
-                    string temperature = Program.healthDataHolder.DataHolder[ginNumber].Temperature;
-                    bool symptom = Program.healthDataHolder.DataHolder[ginNumber].Symptom;
-                    bool hubeiExperience = Program.healthDataHolder.DataHolder[ginNumber].HubeiExperience;
+                    Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                     if (headerPrinted == false)
                     {
                         PrintHeader();
                         headerPrinted = true;
                     }
-                    PrintAnEmployee(ginNumber, name, temperature, symptom.ToString(), hubeiExperience.ToString());
+                    SetAndPrintAnEmployee(employee);
                     Console.ReadKey();
                     Console.Clear();
                 }
@@ -85,16 +79,13 @@ namespace NewHealthFormApplication
                 if (double.Parse(Program.healthDataHolder.DataHolder[ginNumber].Temperature) >= 37.3)
                 {
                     filterExist = true;
-                    string name = Program.healthDataHolder.DataHolder[ginNumber].Name;
-                    string temperature = Program.healthDataHolder.DataHolder[ginNumber].Temperature;
-                    bool symptom = Program.healthDataHolder.DataHolder[ginNumber].Symptom;
-                    bool hubeiExperience = Program.healthDataHolder.DataHolder[ginNumber].HubeiExperience;
+                    Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                     if (headerPrinted == false)
                     {
                         PrintHeader();
                         headerPrinted = true;
                     }
-                    PrintAnEmployee(ginNumber, name, temperature, symptom.ToString(), hubeiExperience.ToString());
+                    SetAndPrintAnEmployee(employee);
                 }
             }
             if (!filterExist)
@@ -114,16 +105,13 @@ namespace NewHealthFormApplication
                 if (double.Parse(Program.healthDataHolder.DataHolder[ginNumber].Temperature) < 37.3)
                 {
                     filterExist = true;
-                    string name = Program.healthDataHolder.DataHolder[ginNumber].Name;
-                    string temperature = Program.healthDataHolder.DataHolder[ginNumber].Temperature;
-                    bool symptom = Program.healthDataHolder.DataHolder[ginNumber].Symptom;
-                    bool hubeiExperience = Program.healthDataHolder.DataHolder[ginNumber].HubeiExperience;
+                    Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                     if (headerPrinted == false)
                     {
                         PrintHeader();
                         headerPrinted = true;
                     }
-                    PrintAnEmployee(ginNumber, name, temperature, symptom.ToString(), hubeiExperience.ToString());
+                    SetAndPrintAnEmployee(employee);
                 }
             }
             if (!filterExist)
@@ -143,16 +131,13 @@ namespace NewHealthFormApplication
                 if (Program.healthDataHolder.DataHolder[ginNumber].Symptom == true)
                 {
                     filterExist = true;
-                    string name = Program.healthDataHolder.DataHolder[ginNumber].Name;
-                    string temperature = Program.healthDataHolder.DataHolder[ginNumber].Temperature;
-                    bool symptom = Program.healthDataHolder.DataHolder[ginNumber].Symptom;
-                    bool hubeiExperience = Program.healthDataHolder.DataHolder[ginNumber].HubeiExperience;
+                    Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                     if (headerPrinted == false)
                     {
                         PrintHeader();
                         headerPrinted = true;
                     }
-                    PrintAnEmployee(ginNumber, name, temperature, symptom.ToString(), hubeiExperience.ToString());
+                    SetAndPrintAnEmployee(employee);
                 }
             }
             if (!filterExist)
@@ -172,16 +157,13 @@ namespace NewHealthFormApplication
                 if (Program.healthDataHolder.DataHolder[ginNumber].Symptom == false)
                 {
                     filterExist = true;
-                    string name = Program.healthDataHolder.DataHolder[ginNumber].Name;
-                    string temperature = Program.healthDataHolder.DataHolder[ginNumber].Temperature;
-                    bool symptom = Program.healthDataHolder.DataHolder[ginNumber].Symptom;
-                    bool hubeiExperience = Program.healthDataHolder.DataHolder[ginNumber].HubeiExperience;
+                    Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                     if (headerPrinted == false)
                     {
                         PrintHeader();
                         headerPrinted = true;
                     }
-                    PrintAnEmployee(ginNumber, name, temperature, symptom.ToString(), hubeiExperience.ToString());
+                    SetAndPrintAnEmployee(employee);
                 }
             }
             if (!filterExist)
@@ -201,16 +183,13 @@ namespace NewHealthFormApplication
                 if (Program.healthDataHolder.DataHolder[ginNumber].HubeiExperience == true)
                 {
                     filterExist = true;
-                    string name = Program.healthDataHolder.DataHolder[ginNumber].Name;
-                    string temperature = Program.healthDataHolder.DataHolder[ginNumber].Temperature;
-                    bool symptom = Program.healthDataHolder.DataHolder[ginNumber].Symptom;
-                    bool hubeiExperience = Program.healthDataHolder.DataHolder[ginNumber].HubeiExperience;
+                    Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                     if (headerPrinted == false)
                     {
                         PrintHeader();
                         headerPrinted = true;
                     }
-                    PrintAnEmployee(ginNumber, name, temperature, symptom.ToString(), hubeiExperience.ToString());
+                    SetAndPrintAnEmployee(employee);
                 }
             }
             if (!filterExist)
@@ -230,16 +209,13 @@ namespace NewHealthFormApplication
                 if (Program.healthDataHolder.DataHolder[ginNumber].HubeiExperience == false)
                 {
                     filterExist = true;
-                    string name = Program.healthDataHolder.DataHolder[ginNumber].Name;
-                    string temperature = Program.healthDataHolder.DataHolder[ginNumber].Temperature;
-                    bool symptom = Program.healthDataHolder.DataHolder[ginNumber].Symptom;
-                    bool hubeiExperience = Program.healthDataHolder.DataHolder[ginNumber].HubeiExperience;
+                    Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                     if (headerPrinted == false)
                     {
                         PrintHeader();
                         headerPrinted = true;
                     }
-                    PrintAnEmployee(ginNumber, name, temperature, symptom.ToString(), hubeiExperience.ToString());
+                    SetAndPrintAnEmployee(employee);
                 }
             }
             if (!filterExist)
@@ -260,6 +236,10 @@ namespace NewHealthFormApplication
         {
             Console.WriteLine("| {0, -20}| {1, -20}| {2, -20}| {3, -20}| {4, -20}| ", ginNumber, name, temperature, symptom, hubeiExperience);
             Console.WriteLine("---------------------------------------------------------------------------------------------------------------");
+        }
+        private static void SetAndPrintAnEmployee(Employee employee)
+        {
+            PrintAnEmployee(employee.GinNumber, employee.Name, employee.Temperature, employee.Symptom.ToString(), employee.HubeiExperience.ToString());
         }
     }
 }

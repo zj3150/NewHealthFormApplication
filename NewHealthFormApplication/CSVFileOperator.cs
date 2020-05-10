@@ -47,8 +47,8 @@ namespace NewHealthFormApplication
                         string ginNumber = employeeData[0];
                         string name = employeeData[1];
                         string temperature = employeeData[2];
-                        bool symptom = employeeData[3] == "Yes" ? true : false ;
-                        bool hubeiExperience = employeeData[4] == "Yes" ? true : false;
+                        bool symptom = employeeData[3] == "Yes";
+                        bool hubeiExperience = employeeData[4] == "Yes";
                         Program.healthDataHolder.AddEmployee(ginNumber, name, temperature, symptom, hubeiExperience);
                     }
                 }
