@@ -15,7 +15,7 @@ namespace NewHealthFormApplication
                 Console.WriteLine("\nIt's not a valid gin number");
                 return GetGinNumber();
             }
-            else if (Program.healthDataHolder.DataHolder.ContainsKey(input))
+            else if (Program.healthDataHolder.ContainsKey(input))
             {
                 Console.WriteLine("\nThe gin number is already existed.");
                 return GetGinNumber();
@@ -87,7 +87,7 @@ namespace NewHealthFormApplication
         
         public static bool EditEmployee(string ginNumber)
         {
-            if (Program.healthDataHolder.DataHolder.ContainsKey(ginNumber))
+            if (Program.healthDataHolder.ContainsKey(ginNumber))
             {
                 string name = InputHandler.GetName();
                 string temperature = InputHandler.GetTemperature();

@@ -28,5 +28,10 @@ namespace NewHealthFormApplication
             DataHolder[ginNumber].Symptom = symptom;
             DataHolder[ginNumber].HubeiExperience = hubeiExperience;
         }
+
+        public bool ContainsKey(string ginNumber)
+        {
+            return DataHolder.ContainsKey(ginNumber);
+        }
     }
 }
