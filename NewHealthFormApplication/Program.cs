@@ -26,7 +26,7 @@ namespace NewHealthFormApplication
                 switch (purpose)
                 {
                     case 1:
-                        Program.healthDataHolder = new HealthDataHolder();
+                        healthDataHolder = new HealthDataHolder();
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         Console.Clear();

@@ -50,10 +50,10 @@ namespace NewHealthFormApplication
             bool headerPrinted = false;
             foreach (string ginNumber in Program.healthDataHolder.DataHolder.Keys)
             {
-                if (Program.healthDataHolder.DataHolder[ginNumber].Name == input)
+                Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
+                if (employee.Name == input)
                 {
                     nameExist = true;
-                    Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                     if (headerPrinted == false)
                     {
                         PrintHeader();
@@ -76,10 +76,10 @@ namespace NewHealthFormApplication
             bool headerPrinted = false;
             foreach (string ginNumber in Program.healthDataHolder.DataHolder.Keys)
             {
-                if (double.Parse(Program.healthDataHolder.DataHolder[ginNumber].Temperature) >= 37.3)
+                Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
+                if (double.Parse(employee.Temperature) >= 37.3)
                 {
                     filterExist = true;
-                    Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                     if (headerPrinted == false)
                     {
                         PrintHeader();
@@ -102,10 +102,10 @@ namespace NewHealthFormApplication
             bool headerPrinted = false;
             foreach (string ginNumber in Program.healthDataHolder.DataHolder.Keys)
             {
-                if (double.Parse(Program.healthDataHolder.DataHolder[ginNumber].Temperature) < 37.3)
+                Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
+                if (double.Parse(employee.Temperature) < 37.3)
                 {
                     filterExist = true;
-                    Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                     if (headerPrinted == false)
                     {
                         PrintHeader();
@@ -128,10 +128,10 @@ namespace NewHealthFormApplication
             bool headerPrinted = false;
             foreach (string ginNumber in Program.healthDataHolder.DataHolder.Keys)
             {
-                if (Program.healthDataHolder.DataHolder[ginNumber].Symptom == true)
+                Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
+                if (employee.Symptom == true)
                 {
                     filterExist = true;
-                    Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                     if (headerPrinted == false)
                     {
                         PrintHeader();
@@ -154,10 +154,10 @@ namespace NewHealthFormApplication
             bool headerPrinted = false;
             foreach (string ginNumber in Program.healthDataHolder.DataHolder.Keys)
             {
-                if (Program.healthDataHolder.DataHolder[ginNumber].Symptom == false)
+                Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
+                if (employee.Symptom == false)
                 {
                     filterExist = true;
-                    Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                     if (headerPrinted == false)
                     {
                         PrintHeader();
@@ -180,10 +180,10 @@ namespace NewHealthFormApplication
             bool headerPrinted = false;
             foreach (string ginNumber in Program.healthDataHolder.DataHolder.Keys)
             {
-                if (Program.healthDataHolder.DataHolder[ginNumber].HubeiExperience == true)
+                Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
+                if (employee.HubeiExperience == true)
                 {
                     filterExist = true;
-                    Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                     if (headerPrinted == false)
                     {
                         PrintHeader();
@@ -206,10 +206,10 @@ namespace NewHealthFormApplication
             bool headerPrinted = false;
             foreach (string ginNumber in Program.healthDataHolder.DataHolder.Keys)
             {
-                if (Program.healthDataHolder.DataHolder[ginNumber].HubeiExperience == false)
+                Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
+                if (employee.HubeiExperience == false)
                 {
                     filterExist = true;
-                    Employee employee = Program.healthDataHolder.DataHolder[ginNumber];
                     if (headerPrinted == false)
                     {
                         PrintHeader();

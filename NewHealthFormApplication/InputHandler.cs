@@ -89,10 +89,10 @@ namespace NewHealthFormApplication
         {
             if (Program.healthDataHolder.ContainsKey(ginNumber))
             {
-                string name = InputHandler.GetName();
-                string temperature = InputHandler.GetTemperature();
-                bool symptom = InputHandler.GetSymptom();
-                bool hubeiExperience = InputHandler.GetHubeiExperience();
+                string name = GetName();
+                string temperature = GetTemperature();
+                bool symptom = GetSymptom();
+                bool hubeiExperience = GetHubeiExperience();
                 Program.healthDataHolder.DataHolder[ginNumber] = new Employee(ginNumber, name, temperature, symptom, hubeiExperience);
                 return true;
             }
