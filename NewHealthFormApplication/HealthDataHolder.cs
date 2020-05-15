@@ -2,7 +2,7 @@
 
 namespace NewHealthFormApplication
 {
-    class HealthDataHolder
+    public class HealthDataHolder
     {
         public Dictionary<string, Employee> DataHolder { get; set; } = new Dictionary<string, Employee>();
         public void AddEmployee(string ginNumber, string name, string temperature, bool symptom, bool hubeiExperience)

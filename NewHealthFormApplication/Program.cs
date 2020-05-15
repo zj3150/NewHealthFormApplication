@@ -5,10 +5,11 @@ namespace NewHealthFormApplication
     class Program
     {
         public static HealthDataHolder healthDataHolder;
-        static void Main(string[] args)
-        {
-            MainMenu();
-        }
+
+        //static void Main(string[] args)
+        //{
+        //    MainMenu();
+        //}
         static void MainMenu()
         {
             int purpose;

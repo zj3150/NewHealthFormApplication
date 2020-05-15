@@ -1,6 +1,6 @@
 ﻿namespace NewHealthFormApplication
 {
-    class Employee
+    public class Employee
     {
         public string GinNumber
         {
